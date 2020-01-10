@@ -35,6 +35,6 @@ and control which (or how many devices) can connect the switch./*all ports are e
 #show port-security int ..
 
 IMP:
-Sticky-Learned MACs will only show up 
+(Permanent) Sticky-Learned MACs will only show up 
 #copy run start
 #reload
