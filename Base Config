@@ -6,6 +6,7 @@
  SW#hostname IT
  /creating a banner for warning/
  IT#banner motd #unauthorized access is stricktly forbidden!#
+ / Create domain name+ generate rsa key+username & password to configure SSH /
  IT#ip domain-name cisco.com 
  #crypto key generate rsa 
  #1024
