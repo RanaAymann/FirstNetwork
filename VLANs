@@ -1,2 +1,40 @@
-(Trunking and Port Security)
-types of port security (static,dynamic,sticky,max mac addreses,violation,err-disable)
+(Port Security)
+types of port security (static,dynamic,sticky,max mac addreses,violation (respond),err-disable) --> Security
+and control which (or how many devices) can connect the switch./*all ports are enable by defualt*
+#int f0/0
+#switchport mode access
+! sets port to non-trunking
+#switchport port-security
+! activates port security
+#switchport port-security mac-address 0000.aaaa.1111
+! (statically) defines an allowed MAC
+#switchport port-security violation restrict
+! Forwards traffic from the specified MAC
+! Drops traffic from non-allowed MACs
+! sends alerts and SNMP traps on violation
+
+#int f0/2
+#switchport mode access
+#switchport port-security
+! activates port security using defaults.
+! No sticky learning
+! No statically-defined MACs
+! Violation: shutdown (default)
+
+#int f0/2
+#switchport mode access
+#switchport port-security maximum 8
+! sets limit of 8 allowed MACs
+#switchport port-security violation protect
+! Discards frames from non-allowed MACs
+! forwards frames from allowed MACs
+! Does not send alerts or SNMP traps on violation
+
+
+#show running-config
+#show port-security int ..
+
+IMP:
+Sticky-Learned MACs will only show up 
+#copy run start
+#reload
