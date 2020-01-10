@@ -4,28 +4,36 @@
  #conf t  /privildge mode/
  /start configuring in global mode/
  SW#hostname IT
- IT#ip domain-name cisco.com
+ /creating a banner for warning/
+ IT#banner motd #unauthorized access is stricktly forbidden!#
+ IT#ip domain-name cisco.com 
  #crypto key generate rsa 
  #1024
  #username bing secret chan 
  / these commands are for creating SSH security for the switch /
- #line console 0    / security for the console cable /
+ #line console 0 / security for the console cable /
+ #password 123
+ #login
  #logging sync    /CLI not drive me insane when i press wrong typing/
  #exec-timeout 0 0 /eliminate the timeout when i do something away from the CLI/
  #exit
  
 / Vitrual Termainals lines :telnet session /
 #line vty 0 4  /SSH is more secure than Telnet/
+#password 1234
 #login local
 #exec-timeout 60
 #transport input telnet SSH 
 or
-#transport input SSH /to make the lines all SSH/
+#transport input SSH */to make the lines all SSH/*
 #exit
-# no ip domain-lookup
+*/ DNS lookup ( to resolve misspelled words into IP addresses) /*
+#conf t 
+# no ip domain-lookup 
 #exit
 #cont f
-#enable secret cisco / (the password into the device ) /
+#enable secret cisco / (the password into the device to secure the privileged EXEC mode ) /
+#service password-encryption */tells the switch to encrypt all the passwords*/
 /create a vlan with the interfaces that i'll never use/
 #vlan 99
 #exit
@@ -35,8 +43,10 @@ or
 #shut
 #exit
 #show vlan brief / to see all vlans with it's interfaces/
-
-#copy run start
+/saving and viewing configuration
+#show run
+#show startuo-config
+#copy run start / to copy both startup and running configurations/
 or
 #do wr
 
