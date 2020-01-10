@@ -4,14 +4,45 @@
 #duplex full
 #speed 100 (Mbps)
 or
-#duplex half
+#duplex half (collision happens using UTP)
 #speed 10
 or 
 #duplex auto
 #speed auto
-
+--> Bridging and Switches (Filter,forward,flood)
 (Trunking and VTP)
-Create VlAN
+Create VlANs (ip agonstic don't understand IPs)
 #vlan 10
+#name HR
+#spanning-tree portfast
 #exit
+#erase startup-config
+#delete flash:valn.dat
+#reload
+Assigning VLANs
+#int f0/0
+#switchport access vlan 10
+#exit 
+(Switchport modes-> access,trunk,dynamic auto,dynamic desirable)
+! access: DTP frames are not sent or ack
+! trunk: DTP frames are sent,but the received trunk will only form it a request is received from the other switch.
+! dynamic auto: only in response to a DTP request to do so.(receive DTP only)
+! dynamic desirable: (default) DTP are send and received.
+#int f0/0
+#switchport mode Off
+#switchport nonegotiate /disable DTP/
+or
+#switchport trunk allowed VLAN ... ( will avoid some vlans,but trunk allow all vlans by default)
+exit
+#switchport native vlan 1 (default)-> change it for security.
+
+
+(VTP)
+#show VTP status
+#Vtp mode server
+#Vtp domain Nuggets
+#Vtp password cisco
+
+
+
 
