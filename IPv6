@@ -1,1 +1,20 @@
+128 bits address
+#int f0/0 
+ipv6 address 2001:AB00:00FF:1::/64 eui-64 (without it you must provide a full 128 bits address)
+#show ipv6 interface
+
+ipv6 on a router
+#ip routing
+#ipv6 unicast-routing 
+#ipv6 address 2001:210:10:1::/64 eui-64
+#no shutdown
+#show ipv6 interface brief
+ there's alink-local address by default the router will produce it.
+ 
+ Virtual interface-> if there's not a host and it's a LAN will provide it better than assigning an interface
+ #interface loopback 0
+ #ipv6 address 2001:56::1/64
+ 
+ 
+ #ping ipv6 interface...
 
