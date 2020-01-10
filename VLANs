@@ -12,9 +12,12 @@ or
 --> Bridging and Switches (Filter,forward,flood)
 (Trunking and VTP)
 Create VlANs (ip agonstic don't understand IPs)
+! create mutliple broadcast domains,subnets,networks.
+! extend layer 2 fabric and segment,isolate traffic.
+! Moving between VLANs-> Router on a stick.
 #vlan 10
 #name HR
-#spanning-tree portfast
+#spanning-tree portfast (prevent BPDU)
 #exit
 #erase startup-config
 #delete flash:valn.dat
@@ -40,7 +43,9 @@ exit
 #switchport mode trunk
 #switchport trunk encapsulation (is1 , dot1q , negotiate )
 
-(VTP)-> client ,server, trasparent
+(VTP)-> client (only puts the database in it) ,server (will take the VLANs) , trasparent (VTP disable)
+! is not a trunking protocol ( replicates VLANs) ,conforms the network so i'll assign the VLANs on each switch.
+! Also it's sequential ( VTP REV #0 )
 #show VTP status
 #Vtp mode server
 #Vtp domain Nuggets ( all switches operating VTP server or client must have the same domain name)
