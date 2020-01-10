@@ -1,25 +1,40 @@
  / Best base configuration /
  on switch
- >ena
- #conf t
- SW#ip domain-name cisco.com
+ >ena    /user mode/
+ #conf t  /privildge mode/
+ /start configuring in global mode/
+ SW#hostname IT
+ IT#ip domain-name cisco.com
  #crypto key generate rsa 
  #1024
  #username bing secret chan 
  / these commands are for creating SSH security for the switch /
  #line console 0    / security for the console cable /
- #logging sync    
- #no exec-timeout
- exit
+ #logging sync    /CLI not drive me insane when i press wrong typing/
+ #exec-timeout 0 0 /eliminate the timeout when i do something away from the CLI/
+ #exit
  
-/ telnet session /
-#line vty 0 4
+/ Vitrual Termainals lines :telnet session /
+#line vty 0 4  /SSH is more secure than Telnet/
 #login local
 #exec-timeout 60
-#transport input telnet SSH
+#transport input telnet SSH 
+or
+#transport input SSH /to make the lines all SSH/
+#exit
 # no ip domain-lookup
 #exit
-#enable secret cisco / in privilidge mode /
+#cont f
+#enable secret cisco / (the password into the device ) /
+/create a vlan with the interfaces that i'll never use/
+#vlan 99
+#exit
+#int g0/0 
+#switchport mode access 
+#switchport access vlan 99
+#shut
+#exit
+#show vlan brief / to see all vlans with it's interfaces/
 
 #copy run start
 or
