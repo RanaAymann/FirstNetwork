@@ -35,14 +35,25 @@ or
 #switchport trunk allowed VLAN ... ( will avoid some vlans,but trunk allow all vlans by default)
 exit
 #switchport native vlan 1 (default)-> change it for security.
+(Trunk mode)
+#int f0/0
+#switchport mode trunk
+#switchport trunk encapsulation (is1 , dot1q , negotiate )
 
-
-(VTP)
+(VTP)-> client ,server, trasparent
 #show VTP status
 #Vtp mode server
-#Vtp domain Nuggets
+#Vtp domain Nuggets ( all switches operating VTP server or client must have the same domain name)
 #Vtp password cisco
+#vtp v2-mode
+#vtp pruning (server mode)
+#switchport trunk pruning vlan remove 3,20-30
+! remove vlan 3 and 20-30
+#switchport trunk pruning vlan except 40-50
+! All VlANs are added to the pruning list except for 40-50
 
-
+#show vtp status
+#show vtp counters
+#clear counters
 
 
