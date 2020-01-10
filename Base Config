@@ -6,7 +6,8 @@
  SW#hostname IT
  /creating a banner for warning/
  IT#banner motd #unauthorized access is stricktly forbidden!#
- / Create domain name+ generate rsa key+username & password to configure SSH /
+ 
+ / Create domain name+ generate rsa key+username & password to configure SSH /-> SSH provides ecryption including pass.
  IT#ip domain-name cisco.com 
  #crypto key generate rsa 
  #1024
@@ -33,7 +34,8 @@ or
 # no ip domain-lookup 
 #exit
 #cont f
-#enable secret cisco / (the password into the device to secure the privileged EXEC mode ) /
+#enable password cisco /(not encrypted)
+#enable secret cisco / ( encrypted password into the device to secure the privileged EXEC mode ) /
 #service password-encryption */tells the switch to encrypt all the passwords*/
 /create a vlan with the interfaces that i'll never use/
 #vlan 99
