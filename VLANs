@@ -1,3 +1,15 @@
+(Duplex) 
+#conf t
+#int f0/0
+#duplex full
+#speed 100 (Mbps)
+or
+#duplex half
+#speed 10
+or 
+#duplex auto
+#speed auto
+
 (Trunking and VTP)
 Create VlAN
 #vlan 10
