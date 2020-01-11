@@ -1,1 +1,50 @@
+! NAT Overload
+! if i'm not using interface assign it no ip address and shutdown
+
+Router#show ip int brief
+! assign PCs ip address using dhcp
+Router(config)#ip dhcp execluded-address 192.168.1.1 192.168.1.49
+#ip dhcp pool BUTTER
+#network 192.168.1.0 255.255.255.0
+#default-router 192.168.1.1
+#dns-server 8.8.8.8 4.2.2.2 ( google and layer 3 DNS servers)
+#exit
+#show ip dhcp binding
+
+! ISP will block RFC 1918 addresses(private addresses) NAT will translate them and replace them with puplic ip address.
+! 3 steps
+! 1-ACL to IP addresses to be translated
+! 2-identify the inside and and outside interface
+! 3-define nat operations
+
+#ip access-list standard NAT_ADDRESSES 
+#permit 192.168.1.0 0.0.0.255
+#exit
+
+#show ip int brief (to know which interface is inside and outside)
+#int f0/0
+#ip nat inside 
+#exit
+
+#int f0/1
+#ip nat outside 
+#exit
+
+! in global mode
+Router(config)#ip nat inside list NAT_ADDRESSES interface f0/1 overload
+! overload (means to use PAT)
+#show ip nat translation
+
+! Overloaded NAT Pool 
+! buy IPs from ISP 
+
+Router(config)#ip nat pool (name) (start address) (last address) perfix-length (CIDR) 
+or
+Router(config)#ip nat pool (name) (start address) (last address) subnet mask  
+Router(config)#ip nat inside list NAT_ADDRESSES pool (name) overload
+
+
+
+
+
 
