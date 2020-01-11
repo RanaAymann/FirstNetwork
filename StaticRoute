@@ -1,1 +1,31 @@
+Router with two connected networks can route automatically.
+(connected networks (no shutdown only) ,static routes,default routes,dynamic routes)
+! static route (remote networks)-> ingress interface , egress interface 
+#ip route (destination address) (subnet mask)  (next hop)
+! default route ( 2 ways )
+! to send traffic to any network not found in the routing table to (establish a gateway of last resort for your router)
+#ip route 0.0.0.0 0.0.0.0 (next hop or interface) 
+! any traffic destined for networks not found in the routing table will be sent to the default network.
+#ip default route (network address)
+or 
+#default-information originate (Rip,EIGRP,OSPF)-> can propagate this default network to other routers
+! floating static route (backup)
+#ip route (destination address) (subnet mask)  (next hop) (distance)
+! Dynamic Routes : routers tells each other about their connected networks.
+! best path according to Administrative distance and Metric
+! the lowest AD is the best for chosing the path
+! Connected 0
+! Static 1
+! RIPv1,2 120 / hop count
+! OSPF 110 / Cost
+! EIGRP (internal) 90 / feasible distance
+! EIGRP (external) 170 / feasible distance
+! The main factor in deciding the best path is routing protocol's metric(algorithm)
+
+
+
+
+
+
+
 
