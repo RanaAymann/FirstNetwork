@@ -4,6 +4,8 @@
 ! Standard IP ACLs should be placed as close to the destination of traffic as possible.
 ! inboud or outbound directons.
 ! all traffic is denied except for what i explicity permit.
+Router(config)#access-list {1-99 | 1300-1999} { permit | deny } <source-addres> <wildcard-mask>
+#ip access-group { number | name } {in|out}
 
 
 
