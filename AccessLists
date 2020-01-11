@@ -1,2 +1,22 @@
-! Types (standard numbered and named)
+! Types (standard numbered (1-99) and named)
+! filter based on the source address only
+! use as packet filters by which you can filter traffic coimg from one network to another.
+! Standard IP ACLs should be placed as close to the destination of traffic as possible.
+! inboud or outbound directons.
+! all traffic is denied except for what i explicity permit.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
