@@ -1,1 +1,27 @@
+#ipv6 route (network address) (interface) (next hop)
+#ipv6 route 2001:db8:cl8:3::/64 g0/0 2001:db8:cl8:3::2
+
+! Floating static route (on another cable ex: FastEthernet) and change the AD
+#ipv6 route 2001:db8:cl8:3::/64 f0/0 200
+
+! Default Routes in ipv6
+#ipv6 route ::/0 2001:db8:cl8:3::2
+or 
+#ipv6 route ::/0  g0/0 
+
+! Troubleshooting ipv6 commands
+
+#debug ipv6 packet
+#debug ipv6 routing
+#show ipv6 int brief
+#show ipv6 int
+#show ipv6 route
+#show ipv6 route summary
+#show ipv6 static
+#show ipv6 static 2001:db8:cl8:3::/64
+#show ipv6 static s0/0/0 (as the outgoing interface)
+#show ipv6 static detail 
+#show ipv6 traffic 
+
+
 
