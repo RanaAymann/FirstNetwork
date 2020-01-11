@@ -1,1 +1,6 @@
+! DHCP in a routed world
+! options the DHCP server assigns subnet mask,router(gateway),DNS server.. and more.
+! clients usually perfer the same IP address
+! a host sends a broadcast msg to the switch saying i need an IP only the DHCP server will respond will offer msg.
+
 
