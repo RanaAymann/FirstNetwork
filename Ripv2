@@ -1,4 +1,6 @@
-Dynamic Routing 
+Dynamic Routing  
+! v1 broadcast , v2 multicast (one to group)
+! adv every 30sec
 ! administrative distance 120
 ! Metric hop count
 ! will assign for each router it's directly connected networks.
