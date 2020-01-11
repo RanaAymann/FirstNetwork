@@ -1,1 +1,9 @@
-
+Dynamic Routing 
+! administrative distance 120
+! Metric hop count
+! will assign for each router it's directly connected networks.
+Router(config)#router rip
+#version 2
+#network <address>
+#network <address>
+#exit 
