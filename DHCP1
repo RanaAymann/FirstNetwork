@@ -1,8 +1,51 @@
-! DHCP in a routed world
-! DHCP 2 ways ( router(server {pool+excluded addresses}),
-! switch{router assign Relay{helper address}).
+! DHCP in a routed world ( the local router is the DHCP server)
+! DHCP way 1 ( router(server {pool+excluded addresses}),
+! way 2 switch{router assign Relay{helper address}).
 ! options the DHCP server assigns subnet mask,router(gateway),DNS server.. and more.
 ! clients usually perfer the same IP address
 ! a host sends a broadcast msg to the switch saying i need an IP only the DHCP server will respond will offer msg.
+
+! Switch have a trunk port connected to the router
+Switch(config)#int f0/0
+#switchport trunk encapsulation dot1q
+#switchport mode trunk
+#Switchport trunk allowed vlans 51,52
+#exit
+
+#show int f0/0 switchport
+
+! Router 
+Router#show ip int brief 
+#int f0/0.51
+#encapsulation dot1q 51
+#ip address 10.1.51.1 255.255.255.0
+#exit
+#int f0/0.52
+#encapsulation dot1q 52
+#ip address 10.1.52.1 255.255.255.0 
+#exit
+
+#show ip int brief 
+! make both PCs in the LAN adapter assign address using DHCP
+
+! write the ips that i don't want to use then make the dhcp server
+Router(config)#ip dhcp execluded-address 10.1.51.1 10.1.51.19
+#ip dhcp execluded-address 10.1.51.100 10.1.51.255
+Router#ip dhcp pool VLAN51(name)
+#network 10.1.51.0 /24
+#default-router 10.1.51.1
+#dns-server 4.2.2.2 8.8.8.8
+! primary and backup servers
+
+#show run 
+#show ip dhcp binding
+
+Router(config)#ip dhcp execluded-address 10.1.52.1 10.1.52.19
+#ip dhcp execluded-address 10.1.52.100 10.1.52.255
+Router#ip dhcp pool VLAN52(name)
+#network 10.1.52.0 /24
+#default-router 10.1.52.1
+#dns-server 4.2.2.2 8.8.8.8
+
 
 
