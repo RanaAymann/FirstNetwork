@@ -1,4 +1,19 @@
-! Static adressing for PCs
-! local to global mapping
+! need to-> Static adressing for PCs
+! the traffic is going inside out or outside in
+! ex: static NAT to translate all traffic from 192.168.1.50 to the IP address 200.1.1.10
+! ex: static NAT to translate all web traffic (HTTP(80)/HTTPS(443)) to the new sever 192.168.1.51
+
+Router(config)#ip nat inside source static 192.168.1.50 200.1.1.10
+! local(private add) to global(public add) mapping.
+#exit
+#show ip nat translations * !(all)
+#clear ip nat translations
+
+#ip nat inside source static tcp 192.168.1.51 80 200.1.1.11 80
+#ip nat inside source static tcp 192.168.1.51 443 200.1.1.11 443
+! for specific tcp port->HTTP-HTTPS
+
+
+
 
 
