@@ -2,4 +2,16 @@
 ! DHCP Relay on the router on a stick, will send unicast to the switch server and end it back to the router,
 then to the PCs who asked for IP Address.
 
+! assign the device server a static IP
+! TFTPD32 simple exec program acts like DHCP server
+! make a pool about the other VLAN on the program ( choose DHCP server from the window)
+
+! assign Relay (helper address on the router on a stick to the PC dhcp server)
+Router#int f0/0.52
+#ip helper-address 10.1.51.200
+! what comes from the VLAN52 will send it through thr router to the PC dhcp sever
+
+#ipconfig /release
+#ipconfig /renew
+
 
