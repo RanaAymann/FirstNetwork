@@ -1,4 +1,4 @@
-! NAT Overload
+! NAT Overload (pool = more than one address)
 ! if i'm not using interface assign it no ip address and shutdown
 
 Router#show ip int brief
