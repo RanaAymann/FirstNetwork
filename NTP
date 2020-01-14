@@ -1,1 +1,30 @@
+! Network Timme Protocol 
+! keep cisco device in synchronized , when the packet is moving from router to another should be sync. in time.
+! internet time source
+! 3 ways: server,NTP multicast,NTP broadcast(small network)
+
+Router#show clock
+#clock set 0:32:00b mar 2 2002 
+! will assign the clock 
+! connect the router with ISP by static routing
+! if i want to check the router is connected to ISP #ping 4.2.2.2 (server)
+
+#ping pool.ntp.org
+! the qus. asks you to connet to this ntp server
+#nslookup 
+! to choose DNS server
+ >pool.ntp.org
+! it will show it's ip address i'll copy it ex: 64.6.144.6
+
+#clock timezone ?
+privi#do show clock
+#ntp server 64.6.144.6
+! pool.ntp.org IP address
+! my router will get the time from ntp server via internet 
+
+#show ntp associations
+
+
+! Daylight savings time
+#clock summer-time XX recurring 
 
