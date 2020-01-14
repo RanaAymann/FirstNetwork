@@ -1,1 +1,21 @@
+! Flash, RAM , MNVRAM
+! http (web server),ftp ( username +pass) ,tftp(UDP , not require to login in)
 
+! backup to tftpd32 program
+#show flash 
+! IOS
+#copy flash tftp
+#copy running-config tftp
+#copy startup-config tftp
+
+Restore
+#copy tftp flash 
+#sequeeze flash 
+! (optional)
+
+!  restore configuration
+#copy tftp startup-config 
+#reload
+
+! copying running-config  will merge and the data will be lost 
+so  copying start-up config is better.
