@@ -1,7 +1,20 @@
+! if i'm not using interface assign it no ip address and shutdown.
 ! PAT :multiple inside local IP addresses are translated to single inside global IP address,
 ! with multiple translations to the same IP distinguished by random source port selection.
+! overload turns on PAT
 ! NAT (static,Pool,PAT)
-! if i'm not using interface assign it no ip address and shutdown
+! static NAT(host reach mail,web servers): one-to-one mapping of an inside local IP to an inside global IP.
+! it does not conserve the ip addresses at all.
+#ip nat inside source static <inside-local-ip> <inside-global-ip>
+! then assign the inside and outside interfaces
+#int <>
+#ip nat inside
+#int <>
+#ip nat outside
+
+
+! pool: a group of addresses that are available for translation
+#ip nat pool <pool-name> <first-ip> <last-ip> netmask <mask>
 
 Router#show ip int brief
 ! assign PCs ip address using dhcp
