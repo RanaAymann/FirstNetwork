@@ -1,4 +1,6 @@
-! NAT Overload (pool = more than one address)
+! PAT :multiple inside local IP addresses are translated to single inside global IP address,
+! with multiple translations to the same IP distinguished by random source port selection.
+! NAT (static,Pool,PAT)
 ! if i'm not using interface assign it no ip address and shutdown
 
 Router#show ip int brief
