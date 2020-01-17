@@ -1,1 +1,71 @@
 ! CDP/LLDP
+! CDP: to obtain protocol addresses of neighboring devices and discover that platform of this dervices.
+! CDP can display information about the interfaces that your device uses.
+! CDP is enabled by default
+! CDP packets are sent out every 60 sec.
+
+
+Router(config)#cdp timer x
+!changes the length of time to keep CDP packets
+Router(config)#cdp timer x
+!changes how often CDP updates are sent
+Router(config)#cdp run
+Router(config)#no cdp run 
+! enable and disbale CDP golbally
+Router(config-if)#cdp enable
+Router(config)#no cdp enable
+! enable and disbale on a specific interface
+
+
+show commands
+
+#show cdp
+#show cdp neighbors
+#show cdp neighbors detail
+#show cdp entry word
+#show cdp entry *
+#show cdp interface
+#show cdp interface x
+#show cdp traffic
+! packet in/out version
+
+
+#clear cdp counters
+#clear cdp table
+
+
+#debug cdp adjacency
+! monitors CDP neighbor information
+#debug cdp events
+#debug cdp ip
+#debug cdp packets
+
+
+! LLDP 
+! to discover the ports that are currently connected.
+
+Switch(config)#lldp run
+#no lldp run
+#lldp holdtime 120
+! amount of time receiving device shoulf hold the information sent to another device 
+before discarding it. 0-65535 seconds
+#lldp timer 30
+! transmission frequency of lldp updates in seconds. 5-65534 seconds
+
+Switch(config-if)#lldp trasmit
+! enable interface to send LLDP
+Switch(config-if)#lldp receive
+!! enable interface to receive LLDP
+Switch(config-if)#no lldp trasmit
+! no LLDP packets are sent on this interfcae
+Switch(config-if)#no lldp receive
+! no LLDP packets are received on this interfcae
+
+#show lldp neighbor
+#show lldp neighbor detail
+
+
+
+
+
+
